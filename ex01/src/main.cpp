@@ -6,7 +6,7 @@
 /*   By: mbernard <mbernard@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 09:29:57 by mbernard          #+#    #+#             */
-/*   Updated: 2024/09/26 13:43:30 by mbernard         ###   ########.fr       */
+/*   Updated: 2024/09/27 08:05:53 by mbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void testInt(void) {
 	int array[] = {2, 15, -42, 0, 12345};
 	size_t len = sizeof(array) / sizeof(int);
 	std::cout << "--- BEFORE ---" << std::endl;
-	iter(array, len, printValue<int>);
 
+	iter(array, len, printValue<int>);
 	iter(array, len, incrementOne<int>);
 
 	std::cout << std::endl << "--- AFTER ---" << std::endl;
@@ -128,11 +128,13 @@ void testSizeT(void) {
    return;
  }
 
-void mainTests(void) {
-   std::cout << CYAN << "===== Subject tests =====" << RESET << std::endl; 
+void awesomeTests(void) {
+   std::cout << CYAN << "===== Awesome tests =====" << RESET << std::endl; 
    int tab[] = { 0, 1, 2, 3, 4 };
    Awesome tab2[5];
 
+   iter( tab, 5, print );
+   iter( tab2, 5, print );
    iter( tab, 5, print<const int> );
    iter( tab2, 5, print<Awesome> );
 }
@@ -144,7 +146,7 @@ int main(void) {
 	testChar2();
 	testString();
 	testSizeT();
-        mainTests();
+        awesomeTests();
 	return 0;
 }
 
