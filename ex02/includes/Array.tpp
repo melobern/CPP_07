@@ -69,7 +69,7 @@ T& Array<T>::operator[](int index) {
 
 template <typename T>
 T const& Array<T>::operator[](int index) const {
-  if (index < 0 || index >= this->_size) {
+  if (index < 0 || static_cast<unsigned int>(index) >= this->_size) {
     throw Array::OutOfBoundException();
   }
   return (this->_array[index]);
