@@ -25,6 +25,7 @@
 static void subjectTests(void) {
   Array<int> numbers(MAX_VAL);
   int *mirror = new int[MAX_VAL];
+
   srand(time(NULL));
   for (int i = 0; i < MAX_VAL; i++) {
     const int value = rand();
@@ -61,6 +62,7 @@ static void subjectTests(void) {
 
 void emptyArray(void) {
   Array<int> empty;
+
   std::cout << "Empty array size: " << empty.size() << std::endl;
   try {
     empty[0] = 42;
