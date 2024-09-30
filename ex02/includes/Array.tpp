@@ -29,10 +29,6 @@ Array<T>::Array(const unsigned int& size) {
     std::cerr << RED "Error: Invalid size: Size must be between 0 and ";
     std::cerr << INT_MAX << RESET << std::endl;
     throw Array::OutOfBoundException();
-    // std::cout << "Creating an empty array instead." << std::endl;
-    // this->_size = 0;
-    // this->_array = new T[0];
-    return;
   }
   this->_size = size;
   this->_array = new T[size];
