@@ -13,11 +13,13 @@
 #ifndef EX02_INCLUDES_ARRAY_HPP_
 #define EX02_INCLUDES_ARRAY_HPP_
 # include <iostream>
+# include <exception>
+# include <climits>
 
 template<typename T>
 class Array {
  private:
-  T *array;
+  T *_array;
   unsigned int _size;
  public:
   Array(void);
@@ -35,4 +37,5 @@ class Array {
     virtual const char* what() const throw();
   };
 };
+#include "Array.tpp"
 #endif  //  EX02_INCLUDES_ARRAY_HPP_
