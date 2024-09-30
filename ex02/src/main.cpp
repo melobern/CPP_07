@@ -60,7 +60,7 @@ static void subjectTests(void) {
   delete[] mirror;  //
 }
 
-void emptyArray(void) {
+static void emptyArray(void) {
   Array<int> empty;
 
   std::cout << "Empty array size: " << empty.size() << std::endl;
@@ -71,7 +71,7 @@ void emptyArray(void) {
   }
 }
 
-void specificSizeArray(void) {
+static void specificSizeArray(void) {
   Array<int> specific(5);
   Array<unsigned int> unsignedArr(5);
 
@@ -85,7 +85,7 @@ void specificSizeArray(void) {
   }
 }
 
-void invalidSize(void) {
+static void invalidSize(void) {
   try {
     Array<unsigned int> unsignedArr(-1);
     std::cout << unsignedArr.size();
@@ -96,8 +96,31 @@ void invalidSize(void) {
       std::cout << unsignedArr[i] << std::endl;
     }
   } catch (const std::exception &e) {
-    std::cerr << e.what() << '\n';
+    std::cerr << RED "Leaving Invalid Size test." RESET << '\n';
   }
+}
+
+static void stringToUpper(std::string &str) {
+  for (int i = 0; str[i]; i++)
+    str[i] = toupper(str[i]);
+}
+
+static void stringArrayTest(void) {
+  unsigned int arraySize = 3;
+  Array<std::string> array(arraySize);
+  std::cout << CYAN "--- Printing empty values ---" RESET << std::endl;
+  for (unsigned int i = 0; i < arraySize; i++)
+    std::cout << i << ": " << array[i] << std::endl;
+  std::cout << CYAN "--- Assign values ---" RESET << std::endl;
+  array[0] = "Coucou";
+  array[1] = "c'est";
+  array[2] = "moi !";
+  for (unsigned int i = 0; i < arraySize; i++)
+    std::cout << i << ": " << array[i] << std::endl;
+  std::cout << CYAN "--- To upper case ---" RESET << std::endl;
+  for (unsigned int i = 0; i < arraySize; i++) stringToUpper(array[i]);
+  for (unsigned int i = 0; i < arraySize; i++)
+    std::cout << i << ": " << array[i] << std::endl;
 }
 
 int main(int, char **) {
@@ -109,5 +132,7 @@ int main(int, char **) {
   specificSizeArray();
   std::cout << CYAN "----------- Invalid Size ------------" RESET << std::endl;
   invalidSize();
+  std::cout << CYAN "----------- String Array ------------" RESET << std::endl;
+  stringArrayTest();
   return 0;
 }
